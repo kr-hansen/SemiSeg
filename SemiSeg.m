@@ -64,13 +64,14 @@ function CellList = SemiSeg(imArray, inputCellList)
     %Select ROI clicking type
     click_type = questdlg('Select Click Type for ROI Selection','Would you like just Circles or Full ROI Selection?','Circles','Full ROI','Full ROI');
     switch click_type
-        case 'Circles' %Taken and altered from Mike's selectSingleFrameRois.m
+        case 'Circles' 
             while(true)
                 mb = msgbox('Zoom to desired area');
                 zoom on;
                 pause
                 [xList,yList] = getpts;
                 for inputs=1:length(xList) %Loop through points
+                    %Taken and altered from Mike's selectSingleFrameRois.m borrowed from https://www.mathworks.com/matlabcentral/newsreader/view_thread/146031
                     cx=xList(inputs); cy=yList(inputs); ix=size(singleFrame,1); iy=size(singleFrame,2); r=6;
                     [x,y]=meshgrid(-(cx-1):(ix-cx),-(cy-1):(iy-cy));
                     c_mask=((x.^2+y.^2)<=r^2);
