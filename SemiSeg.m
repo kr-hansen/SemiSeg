@@ -101,7 +101,7 @@ function CellList = SemiSeg(imArray, inputCellList)
                     case 'Raw' %Threshold from Raw Input Image (Only case that works if only single frame is inputted
                         while(true)
                             compFrame = double(singleFrame);%/256; %Hard Coded for uint8 input
-                            percentile = .95;
+                            percentile = .85; %Change for default threshold
                             threshold = quantile(compFrame(:),percentile);
                             polyselect = roipoly();
                             adjim = polyselect.*compFrame;
